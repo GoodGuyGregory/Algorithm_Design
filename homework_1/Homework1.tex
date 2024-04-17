@@ -1,0 +1,275 @@
+\documentclass[11pt,addpoints,answers]{exam}
+
+% Packages
+\usepackage{fullpage}
+\usepackage{latexsym,amssymb,amsfonts,amsmath,mathrsfs,float, amsthm}
+\usepackage[font=small,labelfont=bf, width=.618\textwidth]{caption} % custom captions
+\usepackage{xcolor}
+\usepackage{tikz, graphics, enumerate}
+\usepackage{hyperref}
+\usepackage{algorithm} 
+\usepackage{algpseudocode} 
+
+% Paragraph indentation and spacing
+\newcommand{\parset}{
+	\setlength{\parskip}{3mm}
+  	\setlength{\parindent}{0mm}}
+	
+% Probability
+  \DeclareMathOperator{\var}{Var}
+  \renewcommand{\Pr}{\mbox{\rm Pr}}	
+  \newcommand{\Exp}{{\mathbb{E}}}
+  \newcommand{\E}{\mathbb{E}}
+
+% Sets 
+  \newcommand{\R}{\mathbb{R}} % reals
+  \newcommand{\C}{\mathbb{C}} % complex numbers
+  \newcommand{\N}{\mathbb{N}} % natural numbers
+  \newcommand{\Z}{\mathbb{Z}} % integers
+  \newcommand{\F}{\mathbb{F}} % field
+  \newcommand{\K}{\mathbb K} % field
+  \newcommand{\T}{\mathbb T} % circle
+\newcommand{\B}{\mathcal{B}} % ball
+  \newcommand{\pmset}[1]{\{-1,1\}^{#1}} % hypercube in +-1 basis
+  \newcommand{\bset}[1]{\{0,1\}^{#1}} % hypercube
+  \newcommand{\sphere}[1]{S^{#1-1}} % real unit sphere of dimension #1
+  \newcommand{\ball}[1]{B_{#1}} % real unit ball of dimension $1
+  \newcommand{\Orth}[1]{O(\R^{#1})} % orthogonal group
+  \DeclareMathOperator{\im}{im} % image
+  \DeclareMathOperator{\vspan}{Span} % kernel
+  \newcommand{\1}{\mathbf{1}}
+  \DeclareMathOperator{\Cball}{\mathcal C}
+  \DeclareMathOperator{\cay}{Cay} 
+  \DeclareMathOperator{\sol}{Sol} 
+\DeclareRobustCommand{\stirling}{\genfrac\{\}{0pt}{}}
+
+% Miscellaneous
+  \newcommand{\st}{:\,} % "such that" to define sets
+  \newcommand{\ie}{{i.e.}}  
+  \newcommand{\eg}{{e.g.}} 
+  \newcommand{\eps}{\varepsilon}
+  \newcommand{\ip}[1]{\langle #1 \rangle}
+  \newcommand{\cF}{{\mathcal F}}   
+  \DeclareMathOperator{\U}{\mathcal{U}}
+  \DeclareMathOperator{\sign}{sign}
+  \newcommand{\poly}{\mbox{\rm poly}}
+  \newcommand{\ceil}[1]{\lceil{#1}\rceil}
+  \newcommand{\floor}[1]{\lfloor{#1}\rfloor}
+  \DeclareMathOperator{\Tr}{\mathsf{Tr}}
+  \DeclareMathOperator{\diag}{diag}
+  \DeclareMathOperator{\patt}{patt}
+  \DeclareMathOperator{\argmin}{arg\,min}
+  \DeclareMathOperator{\spec}{Spec}
+  \DeclareMathOperator{\enc}{\sf Enc}
+  \DeclareMathOperator{\dec}{\sf Dec}
+  \DeclareMathOperator{\diam}{diam} 
+  \DeclareMathOperator{\spn}{span} 
+  \DeclareMathOperator{\geom}{gm}
+\DeclareMathOperator{\sinc}{sinc}
+\DeclareMathOperator{\disc}{disc}
+\DeclareMathOperator*{\argmax}{arg\,max}
+  \newcommand{\infnorm}{{\ell_\infty, \ldots, \ell_\infty}}
+  \newcommand{\pnorm}{{\ell_p,\dots,\ell_p}}
+  \newcommand{\tnorm}{{\ell_t,\dots,\ell_t}}
+  
+  
+% Enviroments
+  \newcommand{\beq}{\begin{equation}}
+  \newcommand{\eeq}{\end{equation}}
+  \newcommand{\beqn}{\begin{equation*}}
+  \newcommand{\eeqn}{\end{equation*}}
+  \newcommand{\beqr}{\begin{eqnarray}}
+  \newcommand{\eeqr}{\end{eqnarray}}
+  \newcommand{\beqrn}{\begin{eqnarray*}}
+  \newcommand{\eeqrn}{\end{eqnarray*}}
+  \newcommand{\bmline}{\begin{multline}}
+  \newcommand{\emline}{\end{multline}}
+  \newcommand{\bmlinen}{\begin{multline*}}
+  \newcommand{\emlinen}{\end{multline*}}
+  
+  \makeatletter
+
+% END OF SUPPLIED VARIABLES
+
+  \chead{\large \textbf{Homework 1}}
+
+  \lhead{\small
+    \textbf{{CS 584/684}\\{PSU} \\ {Spring 2024}}}
+
+  \rhead{\small \textbf{Due Date: April 17, 2024}\\ \textbf{Instructor:
+     {Shravas Rao}}\\\textbf{Student}: FIRSTNAME LASTNAME}
+
+  \setlength{\headheight}{20pt}
+  \setlength{\headsep}{16pt}                       
+  \headrule
+% execute homework commands
+
+\begin{document}
+
+\pagestyle{head}                % put header on every page
+
+\medskip
+\noindent Answer the following questions.  You may collaborate with other members in your group.
+However, you must write your own solution and include your sources.
+
+\smallskip
+
+\noindent \textbf{Collaborators}: WRITE YOUR COLLABORATORS HERE.
+
+\begin{questions}
+
+\question[6]
+
+Consider the following sorting algorithm
+
+\smallskip
+
+\begin{algorithmic}
+\State \textbf{Sort1}($A[1,2,\ldots,n]$)
+\For {$i=n, n-1, \ldots, 1$}
+\For {$j=n, n-1, \ldots, 2$}
+\If {$A[j] < A[j-1]$}
+\State swap $A[j]$ and $A[j-1]$
+\EndIf
+\EndFor
+\EndFor
+\end{algorithmic} 
+
+\smallskip
+
+ \begin{parts}
+
+\part Consider an inductive proof of correctness of the above algorithm.
+Give the base case and the statement proved in the inductive step (you do not need to give a proof).
+
+  \begin{solution}
+				
+  \end{solution}
+
+\part  Give the running time of the above sorting algorithm.
+
+  \begin{solution}
+				
+  \end{solution}
+
+Now, consider the following algorithm
+
+\smallskip
+
+\begin{algorithmic}
+\State \textbf{Sort2}($A[1,2,\ldots,n]$)
+\For {$i=n, n-1, \ldots, 2$}
+\For {$j=n, n-1, \ldots, i$}
+\If {$A[j] < A[j-1]$}
+\State swap $A[j]$ and $A[j-1]$
+\EndIf
+\EndFor
+\EndFor
+\end{algorithmic} 
+
+\smallskip
+
+\part Give a counterexample for every $n \geq 3$ to prove that this sorting algorithm does not sort correctly.
+Partial credit will be given for a counter example that works for a single $n$.
+
+  \begin{solution}
+				
+  \end{solution}
+
+\end{parts}
+
+\question[4]  Give with proof, the running time of the following algorithms using big-Oh notation.
+
+\begin{parts}
+\part 
+
+\smallskip
+
+\begin{algorithmic}
+\State \textbf{F1}($A[1,2,\ldots,n]$)
+\State $s = 0$
+\State $i = 1$
+\While {$i \leq n$}
+\State $j = 1$
+\While {$j \leq n$}
+\State $s = s+A[j]$
+\State $j = j+1$
+\EndWhile
+\State $i = 2i$
+\EndWhile
+\end{algorithmic} 
+
+\smallskip
+
+  \begin{solution}
+				
+  \end{solution}
+\part 
+
+\smallskip
+
+\begin{algorithmic}
+\State \textbf{F1}($A[1,2,\ldots,n]$)
+\State $s = 0$
+\State $i = 1$
+\While {$i \leq n$}
+\State $j = 1$
+\While {$j \leq n$}
+\State $s = s+A[j]$
+\State $j = j+i$
+\EndWhile
+\State $i = 2i$
+\EndWhile
+\end{algorithmic} 
+
+\smallskip
+
+  \begin{solution}
+				
+  \end{solution}
+\end{parts}
+  
+  \question[5] Let $T(1) = 1$, and let
+\[
+T(n) = x^kT\left(\frac{n}{x}\right)+C n^k
+\]
+where $C$, $k$, and $x$ are constants.
+Prove that
+\[
+T(n) = O(n^k \log(n))
+\]
+You may assume that $n$ is a power of $x$.
+Hint: Use induction
+
+\begin{solution}
+  \end{solution}
+    
+\question[5] You are given an array $A[1, \ldots, n]$ of elements that can not be compared other than to say whether they are equal or not. This is, either $A[i] = A[j]$ or $A[i] \neq A[j]$. 
+It is meaningless to say if $A[i] < A[j]$ (for example, if the elements of the array refer to images).
+
+An element of $A$ appears with high majority if there are at least $3n/4$ copies in $A$.
+Note that at most one element can appear with high majority.
+Give an $O(n\log(n))$ algorithm to find the majority element of $A$ or determine if one does not exist.
+You may assume that $A$ is a power of $2$.
+
+Briefly explain why your strategy works and give a proof of the running time.
+
+Hint: Use a divide and conquer strategy.
+
+  \begin{solution}
+  \end{solution}
+
+
+\question[5] \textbf{Optional:} In class, we discussed the best-case and worst-case analysis of Insertion Sort. For this problem, we will consider the average-case analysis.
+
+Consider the set of $n!$ permutations of a sorted list of length $n$, and assume that the list given is uniform over these permutations.
+Give with proof, the expected value of the running time of insertion sort for this problem.
+
+Hint: First, prove that the running time of insertion sort is equal to the number of inversions. Then give with proof, the expected value of the number of inversions.
+
+  \begin{solution}
+				
+  \end{solution}
+
+\end{questions}
+\end{document}
